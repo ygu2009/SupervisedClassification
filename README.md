@@ -2,8 +2,8 @@
 
 Machine Learning Problem Steps:
 
-1. Define the problem (Regression or Classification)
-2. Prepare the data
+1. Define problem (Regression or Classification)
+2. Prepare data
   a. Preprocessing
   b. Freature Transformation
   c. Feature Selection
