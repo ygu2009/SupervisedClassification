@@ -83,11 +83,8 @@ def evaluation_by_cross_validataion(cv, X_train_set, y_train_set):
         estimator_name = 'svc_rbf'
         clf_cv = model_selection(estimator_name)
 
-        # fit classification model
-        model_cv = clf_cv.fit(X_train_cv, y_train_cv)
-
-        # prediction based on trained model
-        y_pred_cv = model_cv.predict_proba(X_test_cv)
+        # fit classification model on training data and make prediction based on trained model
+        y_pred_cv = clf_cv.fit(X_train_cv, y_train_cv).predict_proba(X_test_cv)
 
         # plot the ROC curve for each fold in cv
         fpr = dict()
@@ -139,8 +136,5 @@ if __name__ == '__main__':
     estimator_name = 'svc_rbf'
     clf = model_selection(estimator_name)
 
-    # train the classifier/model from all training data
-    model = clf.fit(X_train, y_train)
-
-    # prediction on test data based on trained model
-    y_pred = model.predict_proba(X_test)
+    # train the classifier/model from all training data and make prediction on test data based on trained model
+    y_pred = clf.fit(X_train, y_train).predict_proba(X_test)
