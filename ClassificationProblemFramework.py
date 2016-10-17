@@ -15,9 +15,10 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import linear_model
-from sklearn.linear_model import BayesianRidge
 from sklearn.svm import SVC
 from sklearn.metrics import roc_curve, auc
+from myLibs import MyBayesianGMM
+
 
 def model_selection(estimator_name):
     """
@@ -55,6 +56,9 @@ def model_selection(estimator_name):
                                                intercept_scaling=1, class_weight=None, random_state=10, solver='liblinear',
                                                max_iter=2000, multi_class='ovr', verbose=0, warm_start=False, n_jobs=1)
 
+    elif estimator_name == "MyBayesian":
+        return MyBayesianGMM.BayesianGMMClassifier()
+
     else:
         print "please select your estimator: ada, GBM, rf, svc_rbf, KNN or LR."
         return 0
@@ -63,7 +67,7 @@ def model_selection(estimator_name):
 def evaluation_by_cross_validataion(cv, X_train_set, y_train_set):
 
     # Compute ROC curve and ROC area for each class
-    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'navy', 'gray', 'tomato','r']
+    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'navy', 'gray', 'tomato']
 
     plt.close()
     fig = plt.figure()
@@ -72,7 +76,7 @@ def evaluation_by_cross_validataion(cv, X_train_set, y_train_set):
     ax.set_yticks(np.arange(0,1.1,0.1))
     plt.grid()
 
-    nn = 0
+    nn = -1
     for train_index, test_index in cv:
         nn = nn + 1  # the nn-fold in cv
 
@@ -90,7 +94,7 @@ def evaluation_by_cross_validataion(cv, X_train_set, y_train_set):
         fpr = dict()
         tpr = dict()
         roc_auc = dict()
-        for i in range(2):
+        for i in range(2): # two classes
             fpr[i], tpr[i], _ = roc_curve(y_test_cv, y_pred_cv[:, i])
             roc_auc[i] = auc(fpr[i], tpr[i])
 
@@ -107,10 +111,10 @@ def evaluation_by_cross_validataion(cv, X_train_set, y_train_set):
 if __name__ == '__main__':
 
     # step 1: load the feature dataset (in "mat" file) which is already preprocessed from raw data.
-    mat=h5py.File('./train_data_feature_matrix.mat','r')
+    mat=h5py.File('./train_data.mat','r')
     train=np.array(mat.get('data'))
 
-    mat2=h5py.File('./test_data_feature_matrix.mat','r')
+    mat2=h5py.File('./test_data.mat','r')
     test=np.array(mat2.get('data'))
 
     #'target', 'hist_mean', 'hist_var', 'obj_mode','obj_mass', 'obj_density', 'obj_nvoxels', 'ave_norm_of_gradient', 'hist_matrix(100bins)'
