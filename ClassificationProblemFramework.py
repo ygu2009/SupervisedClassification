@@ -1,5 +1,6 @@
 """
 Library: scikit-learn (Machine Learning in Python http://scikit-learn.org/stable/)
+Library: myLibs
 
 Implemented in Python 2.7 by Yingying Gu.
 Date: 02/15/2015
@@ -60,7 +61,7 @@ def model_selection(estimator_name):
         return MyBayesianGMM.BayesianGMMClassifier()
 
     else:
-        print "please select your estimator: ada, GBM, rf, svc_rbf, KNN or LR."
+        print "please select your estimator: ada, GBM, rf, svc_rbf, KNN, LR or MyBayesian."
         return 0
 
 
@@ -83,7 +84,7 @@ def evaluation_by_cross_validataion(cv, X_train_set, y_train_set):
         X_train_cv, X_test_cv = X_train_set[train_index], X_train_set[test_index]
         y_train_cv, y_test_cv = y_train_set[train_index], y_train_set[test_index]
 
-        # choose the classification model/estimator: ada, GBM, rf, svc_rbf, KNN or LR
+        # choose the classification model/estimator: ada, GBM, rf, svc_rbf, KNN, LR or MyBayesian
         estimator_name = 'svc_rbf'
         clf_cv = model_selection(estimator_name)
 
