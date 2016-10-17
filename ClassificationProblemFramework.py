@@ -67,8 +67,8 @@ def model_selection(estimator_name):
 
 def evaluation_by_cross_validataion(cv, X_train_set, y_train_set):
 
-    # Compute ROC curve and ROC area for each class
-    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'navy', 'gray', 'tomato']
+    # Compute ROC curve and ROC area for evaluation
+    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'navy', 'gray', 'tomato'] # colors for ROC curve in each fold
 
     plt.close()
     fig = plt.figure()
