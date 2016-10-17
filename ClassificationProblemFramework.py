@@ -24,7 +24,7 @@ from myLibs import MyBayesianGMM
 def model_selection(estimator_name):
     """
     ---------------------------
-    - Select Regression Model -
+    - Select Classification Model -
     ---------------------------
 
     """
