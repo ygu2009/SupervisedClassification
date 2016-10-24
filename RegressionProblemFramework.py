@@ -2,6 +2,7 @@
 Data:
     - train.txt: 10,000 records x 255 features + 1 target 
     - test.txt : 1,000 records x 255 features            
+The feature variables contrain numberical values, categorical values(eg, strings), and missing values.
 
 Library: scikit-learn (Machine Learning in Python http://scikit-learn.org/stable/)
 
