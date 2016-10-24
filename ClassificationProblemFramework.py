@@ -2,6 +2,10 @@
 Library: scikit-learn (Machine Learning in Python http://scikit-learn.org/stable/)
 Library: myLibs
 
+Image Data: The feature variables are extracted for each segmented object/area.
+Attribute Information: mean, variance, mode, mass, density, number of voxels, average of normalized gradient, and histograms in 100 bins.
+Prediction: target or non-traget
+
 Implemented in Python 2.7 by Yingying Gu.
 Date: 02/15/2015
 """
