@@ -4,9 +4,9 @@ Machine Learning Steps:
 
 1. Define problem (Regression or Classification)
 2. Prepare data:
-.. Preprocessing
-.. Freature Transformation
-.. Feature Selection
+..* Preprocessing
+..* Freature Transformation
+..* Feature Selection
 3. Choose algorithm
 4. Evaluate algorithm:
 .. n-folds cross validation
