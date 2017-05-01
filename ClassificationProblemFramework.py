@@ -33,7 +33,7 @@ def model_selection(estimator_name):
 
     """
     if estimator_name == "ada":
-        return AdaBoostClassifier(DecisionTreeClassifier(max_depth=5), n_estimators=500, learning_rate=1, algorithm="SAMME", random_state=10) # learning_rate=1 is best
+        return AdaBoostClassifier(DecisionTreeClassifier(max_depth=5), n_estimators=500, learning_rate=1, algorithm="SAMME", random_state=10)
 
     elif estimator_name == "GBM":
         return GradientBoostingClassifier(loss='deviance', learning_rate=0.1, n_estimators=300, subsample=1.0,
